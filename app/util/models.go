@@ -1,6 +1,6 @@
-package routes
+package util
 
 // request format
-type request struct {
+type Request struct {
 	URL string `json:"url"`
 }

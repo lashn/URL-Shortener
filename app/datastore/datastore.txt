@@ -1,4 +1,6 @@
-https:/timesofindia.indiatimes.com/spotlight/some-of-the-worlds-greatest-minds-are-shaping-the-future-workforce-at-upes/articleshow/94960652.cms::8ad9d4
-https:/timesofindia.indiatimes.com/spotlight/some-of-the-worlds-greatest-minds-are-shaping-the-future-workforce-at-upes/articleshow/94960653.cms::effb1c
-https:/google.com/sampleurl/sample1/sample2::bbed22
-https:/google.com/sampleurl/sample1/sample3::323b69
+https://timesofindia.indiatimes.com/spotlight/some-of-the-worlds-greatest-minds-are-shaping-the-future-workforce-at-upes/articleshow/94960652.cms::8ad9d4
+https://timesofindia.indiatimes.com/spotlight/some-of-the-worlds-greatest-minds-are-shaping-the-future-workforce-at-upes/articleshow/94960653.cms::effb1c
+https://google.com/sampleurl/sample1/sample2::bbed22
+https://google.com/sampleurl/sample1/sample3::323b69
+https://google.com/sampleurl/sample1/sample4::10c611
+https://google.com/sampleurl/sample1/sample5::c218e3
