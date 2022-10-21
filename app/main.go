@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -11,11 +12,11 @@ import (
 
 func main() {
 	router := NewApplicationHandler()
+	fmt.Println("server is running on 8000 port")
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
-// NewApplicationHandler provides a configured handler for the
-// application.
+// NewApplicationHandler provides a configured handler for the application.
 func NewApplicationHandler() http.Handler {
 	router := mux.NewRouter()
 	router.HandleFunc("/shortenURL", routes.ShortenURL).Methods("POST")

@@ -19,8 +19,6 @@ func TestHealthCheckHandler(t *testing.T) {
     rr := httptest.NewRecorder()
     handler := http.HandlerFunc(Test)
 
-    // Our handlers satisfy http.Handler, so we can call their ServeHTTP method
-    // directly and pass in our Request and ResponseRecorder.
     handler.ServeHTTP(rr, req)
 
     // Check the status code is what we expect.
