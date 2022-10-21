@@ -5,10 +5,11 @@ import (
 	"log"
 	"os"
 	"strings"
+
 	"github.com/lashn/URL-Shortener/app/util"
 )
 
-//saves the newly created shorten url to text file
+// saves the newly created shorten url to text file
 func SaveMapTo_TextFile(url, enc_url string) error {
 	file, err := os.OpenFile(util.DS_Path, os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
@@ -30,7 +31,7 @@ func SaveMapTo_TextFile(url, enc_url string) error {
 	return nil
 }
 
-//checks if the given url already exists in the text file
+// checks if the given url already exists in the text file
 func CheckURL_TextFile(url string) (string, bool) {
 	file, err := os.Open(util.DS_Path)
 	if err != nil {
@@ -38,11 +39,20 @@ func CheckURL_TextFile(url string) (string, bool) {
 	}
 	defer file.Close()
 
+	//generalize url
+	var GeneralizedUrl = url
+	if strings.HasPrefix(url, "https://") {
+		GeneralizedUrl = strings.Replace(url, "https://", "", 1)
+	}
+	if strings.HasPrefix(url, "http://") {
+		GeneralizedUrl = strings.Replace(url, "http://", "", 1)
+	}
+
 	//check if the URL exists in the text file by file walk and return the shortURL or null
 	found := "null"
 	fileScanner := bufio.NewScanner(file)
 	for fileScanner.Scan() {
-		if strings.Contains(fileScanner.Text(), url) {
+		if strings.Contains(fileScanner.Text(), GeneralizedUrl) {
 			found = fileScanner.Text()
 		}
 	}

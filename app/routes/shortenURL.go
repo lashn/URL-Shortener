@@ -24,7 +24,6 @@ func ShortenURL(writer http.ResponseWriter, reader *http.Request) {
 		writer.WriteHeader((http.StatusBadRequest))
 		fmt.Fprint(writer, "{\"message\":\"Bad URL\"}")
 		return
-		
 	}
 
 	if enc_url, ok := helper.CheckURL_TextFile(url); ok {
