@@ -2,8 +2,10 @@ package helper
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
+	"runtime"
 	"strings"
 
 	"github.com/lashn/URL-Shortener/app/util"
@@ -11,7 +13,8 @@ import (
 
 // saves the newly created shorten url to text file
 func SaveMapTo_TextFile(url, enc_url string) error {
-	file, err := os.OpenFile(util.DS_Path, os.O_APPEND|os.O_WRONLY, 0644)
+	fPath := getFilePath(util.DS_Path, util.DS_File)
+	file, err := os.OpenFile(fPath, os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatalln("Error opening the file", err)
 		return err
@@ -33,7 +36,8 @@ func SaveMapTo_TextFile(url, enc_url string) error {
 
 // checks if the given url already exists in the text file
 func CheckURL_TextFile(url string) (string, bool) {
-	file, err := os.Open(util.DS_Path)
+	fPath := getFilePath(util.DS_Path, util.DS_File)
+	file, err := os.Open(fPath)
 	if err != nil {
 		log.Fatalln("Error opening the file", err)
 	}
@@ -64,4 +68,19 @@ func CheckURL_TextFile(url string) (string, bool) {
 	} else {
 		return found, false
 	}
+}
+
+func getFilePath(file, path string) string {
+
+	var fPath string
+	if runtime.GOOS == "windows" {
+
+		fPath = util.DS_Path + "\\" + util.DS_File
+		fmt.Printf("Opening datastore file %s in Windows env", fPath)
+	} else {
+		fPath = util.DS_Path + "/" + util.DS_File
+		fmt.Printf("Opening datastore file %s in Linux env", fPath)
+	}
+	return fPath
+
 }
